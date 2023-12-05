@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pila Animada</title>
+    <link rel="stylesheet" href="stylePila.css">
+</head>
+<body>
+    <div class="containerGeneral">
+    <div class="contenedor">
+        <div id="pila"></div>
+
+        <div class="imagenesOperaciones">
+            <div id="imagenPush" class="imagenOperacion" style="display: none;">
+                <img src="push.jpg" alt="Imagen Push" width="500px">
+            </div>
+            <div id="imagenPop" class="imagenOperacion" style="display: none;">
+                <img src="pop.jpg" alt="Imagen Pop" width="500px">
+            </div>
+        </div>
+    </div>
+
+    <form id="formElemento">
+        <div class="nuevoElemento">
+            <input type="text" id="nuevoElemento" placeholder="Ingresa un elemento"><br>
+        </div>
+        <button id="cargarPila">Cargar Pila Guardada</button>
+        <button id="nuevaPila">Crear Nueva Pila</button>
+        <button type="submit">Push</button>
+        <button id="eliminarElemento">Pop</button>
+        <button id="return"><a href="indexPrincipal.html">Regresar al inicio</a></button>
+    </form>
+    </div>
+    <script src="scriptPila.js"></script>
+</body>
+</html>

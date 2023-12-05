@@ -1,0 +1,56 @@
+body {
+    background-image: url(wallpaper.png);
+    background-repeat:space;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    margin-top: 12%;
+}
+
+.containerGeneral{
+    margin-top: 5px;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: rgba(234, 236, 224, 0.697);
+    border: 5px solid #efefef;
+    border-radius: 5px;
+    /*Agrega transicion*/
+    transition: all 0.5s ease;
+}
+
+h1{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+h2{
+    font-size: 30px;
+    font-weight: bold;
+}
+.integrantes{
+    list-style-type:none;
+    padding: 0;
+    font-weight: bold;
+}
+
+p{
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.boton {
+    margin-top: 5px;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: rgb(167, 252, 101);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}

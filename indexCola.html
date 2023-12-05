@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cola Animada</title>
+    <link rel="stylesheet" href="styleCola.css">
+</head>
+<body>
+    <div class="containerGeneral">
+        <div class="contenedor">
+            <div id="pila"></div>
+    
+            <div class="imagenesOperaciones">
+                <div id="imagenPush" class="imagenOperacion" style="display: none;">
+                    <img src="pushCola.png" alt="Imagen Push" width="500px">
+                </div>
+                <div id="imagenPop" class="imagenOperacion" style="display: none;">
+                    <img src="popCola.png" alt="Imagen Pop" width="500px">
+                </div>
+            </div>
+        </div>
+
+        <form id="formElemento">
+            <div class="nuevoElemento">
+                <input type="text" id="nuevoElemento" placeholder="Ingresa un elemento"><br>
+            </div>
+            <button id="cargarCola">Cargar Cola Guardada</button>
+            <button id="nuevaCola">Crear Nueva Cola</button>
+            <button type="submit">Push</button>
+            <button id="eliminarElemento">Pop</button>
+            <button id="return"><a href="indexPrincipal.html">Regresar al inicio</a></button>
+    </div>
+</body>
+</html>
