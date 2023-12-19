@@ -3,6 +3,8 @@ var pushButton = document.getElementById("pushButton");
 var popButton = document.getElementById("popButton");
 var imagenPop = document.getElementById("imagenPop");
 var imagenPush = document.getElementById("imagenPush");
+var guardaCola = document.getElementById("guardarCola")
+var cargaCola = document.getElementById("cargarCola")
 let colaJS = [];
 
 popButton.addEventListener("click", function(event) {
@@ -19,11 +21,16 @@ pushButton.addEventListener("click", function(event) {
 
 //funcionalidad de la cola
 function crearNuevaCola() {
+    // Vaciar la cola lógica
+    colaJS = [];
+
+    // Vaciar la cola visual
     const cola = document.getElementById('cola');
     while (cola.firstChild) {
         cola.removeChild(cola.firstChild);
     }
 }
+
 //push
 function agregarALaCola(elemento) {
     var inputField = document.getElementById('nuevoElemento');
@@ -36,8 +43,8 @@ function agregarALaCola(elemento) {
     cola.appendChild(nuevoElemento);
     //interno
     colaJS.push(elemento);
+    console.log(colaJS)
 }
-
 //pop function
 function quitarDeLaCola() {
     const cola = document.getElementById('cola');
@@ -46,16 +53,15 @@ function quitarDeLaCola() {
         cola.removeChild(cola.firstChild);
         // Quitar de la cola en JS
         colaJS.shift();
+        console.log(colaJS)
     }
 }
-
 // Función para guardar la cola en una cookie
 function guardarCola() {
-    let enFormatoString = JSON.stringify(colaJS);
-    document.cookie = "cola=" + enFormatoString + ";max-age=86400;path=/";
     console.log(colaJS);
+    let enFormatoString = JSON.stringify(colaJS);
+    document.cookie = "cola=" + enFormatoString + ";max-age=86400;path=/"
 }
-
 // Función para obtener el valor de una cookie por nombre
 function obtenerMiEstructuraDeDatos(nombreCookie) {
     let cookies = document.cookie.split(';');
@@ -67,7 +73,6 @@ function obtenerMiEstructuraDeDatos(nombreCookie) {
     }
     return null;
 }
-
 function cargarColaGuardada() {
     let colaString = obtenerMiEstructuraDeDatos("cola");
     if (colaString) {
@@ -76,7 +81,6 @@ function cargarColaGuardada() {
 
             // Reconstruir la cola visual
             const colaVisual = document.getElementById('cola');
-            colaVisual.innerHTML = ""; // Borra todos los elementos visuales existentes
 
             colaJS.forEach(elemento => {
                 const nuevoElemento = document.createElement('div');
@@ -89,6 +93,20 @@ function cargarColaGuardada() {
         }
     }
 }
+
+guardaCola.addEventListener("click", function(event) {
+    event.preventDefault();
+    guardarCola();
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('nuevaCola').addEventListener('click', crearNuevaCola);
+    document.getElementById('guardarCola').addEventListener('click', guardarCola);
+    document.getElementById('cargarCola').addEventListener('click', cargarColaGuardada);
+    document.getElementById('pushButton').addEventListener('click', agregarALaCola);
+    document.getElementById('popButton').addEventListener('click', quitarDeLaCola);
+});
+
 
 // Llama a cargarCola al cargar la página para cargar la cola previamente guardada
 window.onload = cargarColaGuardada;
