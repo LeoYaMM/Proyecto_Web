@@ -23,7 +23,7 @@ function crearNuevaCola() {
         cola.removeChild(cola.firstChild);
     }
 }
-
+//push
 function agregarALaCola(elemento) {
     const cola = document.getElementById('cola');
     const nuevoElemento = document.createElement('div');
@@ -32,12 +32,20 @@ function agregarALaCola(elemento) {
     cola.appendChild(nuevoElemento);
 }
 
+//pop function
+function quitarDeLaCola() {
+    const cola = document.getElementById('cola');
+    cola.removeChild(cola.firstChild);
+}
+
+//save queue
 function guardarCola() {
-    const elementos = [];
-    document.querySelectorAll('.elemento-cola').forEach(elemento => {
-        elementos.push(elemento.textContent);
+    const cola = document.getElementById('cola');
+    const colaGuardada = [];
+    cola.childNodes.forEach(elemento => {
+        colaGuardada.push(elemento.textContent);
     });
-    localStorage.setItem('cola', JSON.stringify(elementos));
+    localStorage.setItem('cola', JSON.stringify(colaGuardada));
 }
 
 function cargarColaGuardada() {
@@ -50,11 +58,3 @@ function cargarColaGuardada() {
     }
 }
 
-pushButton.addEventListener('click', function() {
-    const elemento = document.getElementById('elementoCola').value;
-    if (elemento) {
-        agregarALaCola(elemento);
-        guardarCola();
-    }
-    mostrarImagen('push');
-});

@@ -9,7 +9,8 @@
 <body>
     <div class="containerGeneral">
         <div class="contenedor">
-            <div id="cola"></div>
+            <div id="cola">
+            </div>
             <div class="imagenesOperaciones">
                 <div class="imagenOperacion">
                     <img  id="imagenPush" src="pushCola.png" alt="Imagen Push" width="450px" style="display: none;">
@@ -22,10 +23,11 @@
             <div class="nuevoElemento">
                 <input type="text" id="nuevoElemento" placeholder="Ingresa un elemento"><br>
             </div>
-            <button id="cargarCola">Cargar Cola Guardada</button>
-            <button id="nuevaCola">Crear Nueva Cola</button>
-            <button id="pushButton" type="submit">Push</button>
-            <button id="popButton">Pop</button>
+            <button id="nuevaCola" onclick="crearNuevaCola()">Crear Nueva Cola</button>
+            <button id="guardarCola" onclick="guardarCola()">Guardar Cola</button>
+            <button id="cargarCola" onclick="cargarColaGuardada()">Cargar Cola Guardada</button>
+            <button id="pushButton" onclick="agregarALaCola(elemento)">Push</button>
+            <button id="popButton" onclick="quitarDeLaCola()">Pop</button>
             <button id="return"><a href="indexPrincipal.html">Regresar al inicio</a></button>
     </div>
     <script src="scriptCola.js"></script>
