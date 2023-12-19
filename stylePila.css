@@ -160,3 +160,8 @@ elemento-pila {
     animation: fadeOut 0.5s forwards;
     display: none; /* Se establece al final de la animación */
 }
+
+a{
+    text-decoration: none;
+    color: white
+}

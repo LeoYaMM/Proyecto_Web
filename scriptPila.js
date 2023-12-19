@@ -25,6 +25,16 @@ function setCookie(name, value, days) {
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
 
 function guardarPila() {
     const elementos = [];
@@ -32,18 +42,20 @@ function guardarPila() {
         elementos.push(elemento.textContent);
     });
     setCookie('pila', JSON.stringify(elementos), 7); // Guarda la pila por 7 días
+    console.log("Pila guardada:", JSON.stringify(elementos));
+
 }
 
-// Usar getCookie en lugar de localStorage.getItem
 function cargarPilaGuardada() {
     let pilaGuardada;
     try {
         pilaGuardada = JSON.parse(getCookie('pila'));
+        console.log("Pila cargada:", pilaGuardada);
     } catch (e) {
         console.error("Error al parsear la pila guardada:", e);
         return;
     }
-
+    
     if (pilaGuardada) {
         crearNuevaPila(); // Limpia la pila actual antes de cargar la guardada
         pilaGuardada.forEach(elemento => {
@@ -119,13 +131,6 @@ document.getElementById('nuevaPila').addEventListener('click', function() {
     mostrarCodigoFuente();
 });
 
-function guardarPila() {
-    const elementos = [];
-    document.querySelectorAll('.elemento-pila').forEach(elemento => {
-        elementos.push(elemento.textContent);
-    });
-    setCookie('pila', JSON.stringify(elementos), 7)
-}
 
 function cargarPilaGuardada() {
     const pilaGuardada = JSON.parse(getCookie('pila'));
