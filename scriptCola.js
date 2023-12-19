@@ -25,6 +25,8 @@ function crearNuevaCola() {
 }
 //push
 function agregarALaCola(elemento) {
+    var inputField = document.getElementById('nuevoElemento');
+    var elemento = inputField.value;
     const cola = document.getElementById('cola');
     const nuevoElemento = document.createElement('div');
     nuevoElemento.classList.add('elemento-cola');
