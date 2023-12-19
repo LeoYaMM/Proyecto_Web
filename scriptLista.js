@@ -1,4 +1,4 @@
-function appendToEnd(){
+function appendToEnd() {
     var ul = document.getElementById("myList");
     var li = document.createElement("li");
     var inputValue = prompt("Ingresa el elemento:");
@@ -9,10 +9,10 @@ function appendToEnd(){
     document.getElementById('imagenMostrada').src = 'appendToEnd.png';
     setTimeout(() => {
         li.style.transform = "translateY(0)";
-    }, 0);
+    }, 10);
 }
 
-function appendToTop(){
+function appendToTop() {
     var ul = document.getElementById("myList");
     var li = document.createElement("li");
     var inputValue = prompt("Ingresa el elemento:");
@@ -23,10 +23,10 @@ function appendToTop(){
     document.getElementById('imagenMostrada').src = 'appendToTop.png';
     setTimeout(() => {
         li.style.transform = "translateY(0)";
-    }, 0);
+    }, 10);
 }
 
-function insert(){
+function insert() {
     var elemento = prompt("Ingrese el elemento:");
     var posicion = prompt("Ingrese la posición:");
 
@@ -45,17 +45,17 @@ function insert(){
     li.style.transform = "translateY(-100%)";
 
     if (posicion < 0 || posicion >= ul.children.length) {
-       ul.appendChild(li);
+        ul.appendChild(li);
     } else {
-       ul.insertBefore(li, ul.children[posicion]);
+        ul.insertBefore(li, ul.children[posicion]);
     }
     document.getElementById('imagenMostrada').src = 'insert.png';
     setTimeout(() => {
         li.style.transform = "translateY(0)";
-    }, 0);
+    }, 10);
 }
 
-function deleteFirst(){
+function deleteFirst() {
     var ul = document.getElementById("myList");
     if (ul.childElementCount > 0) {
         var primerElemento = ul.firstElementChild;
@@ -65,41 +65,58 @@ function deleteFirst(){
 
         setTimeout(() => {
             ul.removeChild(primerElemento);
-        }, 500);
+        }, 800);
     }
     document.getElementById('imagenMostrada').src = 'deleteFirst.png';
 }
 
-function deleteLast(){
+function deleteLast() {
     var ul = document.getElementById("myList");
     if (ul.childElementCount > 0) {
-        ul.removeChild(ul.lastChild);
+        var lastElement = ul.lastElementChild;
+
+        lastElement.style.transform = "scale(2)";
+        lastElement.style.opacity = 0;
+
+        setTimeout(() => {
+            ul.removeChild(lastElement);
+        }, 800);
     }
     document.getElementById('imagenMostrada').src = 'deleteLast.png';
 }
 
-function deleteByPosition(){
+function deleteByPosition() {
     var index = prompt("Ingrese la posición de la celda a eliminar:");
     var ul = document.getElementById("myList");
     var items = document.querySelectorAll("#myList li");
     if (index < items.length) {
-        ul.removeChild(items[index]);
+        items[index].style.transform = "scale(2)";
+        items[index].style.opacity = 0;
+
+        setTimeout(() => {
+            ul.removeChild(items[index]);
+        }, 800);
     } else {
         alert("Celda fuera de rango.");
     }
     document.getElementById('imagenMostrada').src = 'deleteByPosition.png';
 }
 
-function deleteByValue(){
+function deleteByValue() {
     var contenido = prompt("Ingrese el contenido del elemento que desea eliminar:");
 
-    var lista = document.getElementById("myList"); // Asegúrate de que este sea el ID de tu lista
+    var lista = document.getElementById("myList");
     var elementos = lista.getElementsByTagName("li");
     var encontrado = false;
 
     for (var i = 0; i < elementos.length; i++) {
         if (elementos[i].textContent === contenido) {
-            lista.removeChild(elementos[i]);
+            elementos[i].style.transform = "scale(2)";
+            elementos[i].style.opacity = 0;
+
+            setTimeout(() => {
+                lista.removeChild(elementos[i]);
+            }, 800);
             encontrado = true;
             break;
         }
