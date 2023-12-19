@@ -1,192 +1,101 @@
-// script.js
+// Intercambio de imágenes
+var pushButton = document.getElementById("pushButton");
+var popButton = document.getElementById("popButton");
+var imagenPop = document.getElementById("imagenPop");
+var imagenPush = document.getElementById("imagenPush");
+var guardaPila = document.getElementById("guardarPila")
+var cargaPila = document.getElementById("cargarPila")
+let pilaJS = [];
 
-document.getElementById('formElemento').addEventListener('submit', function(event) {
+popButton.addEventListener("click", function(event) {
+    imagenPush.style.display = "none"
     event.preventDefault();
-
-    const nuevoElemento = document.getElementById('nuevoElemento').value;
-    if (nuevoElemento) {
-        agregarALaPila(nuevoElemento);
-        document.getElementById('nuevoElemento').value = ''; // Limpiar el campo de texto
-        actualizarCodigoOperacion(`void push(Pila *p, int dato) {
-            Nodo *nuevoNodo = crearNodo(dato);
-            nuevoNodo->siguiente = p->cima;
-            p->cima = nuevoNodo;
-        }`)
-    }    
+    imagenPop.style.display = "block"; 
 });
 
-function setCookie(name, value, days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
-
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
-
-function guardarPila() {
-    const elementos = [];
-    document.querySelectorAll('.elemento-pila').forEach(elemento => {
-        elementos.push(elemento.textContent);
-    });
-    setCookie('pila', JSON.stringify(elementos), 7); // Guarda la pila por 7 días
-    console.log("Pila guardada:", JSON.stringify(elementos));
-
-}
-
-
-function agregarALaPila(elemento) {
-    const pila = document.getElementById('pila');
-    const elementoDiv = document.createElement('div');
-    elementoDiv.classList.add('elemento-pila');
-    elementoDiv.textContent = elemento;
-    pila.insertBefore(elementoDiv, pila.firstChild); // Agrega el elemento al principio de la pila
-    guardarPila(); // Guarda la pila después de agregar un nuevo elemento
-    elementoDiv.classList.add('entrando');
-}
-
-document.getElementById('eliminarElemento').addEventListener('click', function() {
-    const pila = document.getElementById('pila');
-    
-    if (pila.firstChild) {
-        const elementoAEliminar = pila.firstChild;
-        elementoAEliminar.classList.add('saliendo');
-        
-        elementoAEliminar.addEventListener('animationend', function() {
-            pila.removeChild(elementoAEliminar);
-            guardarPila();
-            
-            actualizarCodigoOperacion(`int pop(Pila *p) {
-                if (p->cima == NULL) {
-                    printf("Pila vacía. No se puede realizar pop.\\n");
-                    return -1; // O manejar el error como prefieras
-                }
-                Nodo *nodoAEliminar = p->cima;
-                int dato = nodoAEliminar->dato;
-                p->cima = nodoAEliminar->siguiente;
-                free(nodoAEliminar);
-                return dato;
-            }`);
-            
-            elementoAEliminar.removeEventListener('animationend', arguments.callee);
-        });
-    }
+pushButton.addEventListener("click", function(event) {
+    imagenPop.style.display = "none"
+    event.preventDefault();
+    imagenPush.style.display = "block";
 });
 
-
-function actualizarCodigoOperacion(texto) {
-    let codigoOperacion = document.getElementById('codigoOperacion');
-    let codigoFuente = document.getElementById('codigoFuente');
-    
-    // Actualizar texto
-    codigoOperacion.textContent = texto;
-    
-    // Reiniciar la animación
-    codigoOperacion.classList.remove('codigo-visible', 'codigo-oculto');
-    // Forzar el reflujo del DOM
-    void codigoOperacion.offsetWidth;
-    codigoOperacion.classList.add('codigo-visible');
-    
-    // Ocultar el código fuente con animación
-    codigoFuente.classList.remove('codigo-visible');
-    codigoFuente.classList.add('codigo-oculto');
-}
-
-document.getElementById('cargarPila').addEventListener('click', function() {
-    cargarPilaGuardada();
-    mostrarCodigoFuente();
-});
-
-document.getElementById('nuevaPila').addEventListener('click', function() {
-    crearNuevaPila();
-    mostrarCodigoFuente();
-});
-
-document.getElementById('guardarPila').addEventListener('click', function() {
-    guardarPila();
-    mostrarCodigoFuente();
-});
-
-function cargarPilaGuardada() {
-    let pilaGuardada = getCookie('pila');
-    if (pilaGuardada) {
-        try {
-            pilaGuardada = JSON.parse(pilaGuardada);
-            console.log("Pila cargada:", pilaGuardada);
-            crearNuevaPila(); // Limpia la pila actual antes de cargar la guardada
-            pilaGuardada.forEach(elemento => {
-                agregarALaPila(elemento);
-            });
-        } catch (e) {
-            console.error("Error al parsear la pila guardada:", e);
-        }
-    }
-}
-
-
+// Funcionalidad de la pila
 function crearNuevaPila() {
+    // Vaciar la pila lógica
+    pilaJS = [];
+
+    // Vaciar la pila visual
     const pila = document.getElementById('pila');
     while (pila.firstChild) {
         pila.removeChild(pila.firstChild);
     }
 }
+// push
+function agregarALaPila() {
+    var inputField = document.getElementById('nuevoElemento');
+    var elemento = inputField.value;
+    // visual
+    const pila = document.getElementById('pila');
+    const nuevoElemento = document.createElement('div');
+    nuevoElemento.classList.add('elemento-pila');
+    nuevoElemento.textContent = elemento;
+    pila.insertBefore(nuevoElemento, pila.firstChild); // Se inserta al inicio
+    // interno
+    pilaJS.unshift(elemento); // Se agrega al inicio de la pila
+    console.log(pilaJS)
+}
+// pop
+function quitarDeLaPila() {
+    const pila = document.getElementById('pila');
+    if (pila.firstChild) {
+        // Quitar de la pila visual
+        pila.removeChild(pila.firstChild);
+        // Quitar de la pila en JS
+        pilaJS.shift();
+        console.log(pilaJS)
+    }
+}
+// Función para guardar la pila en una cookie
+function guardarPila() {
+    console.log(pilaJS);
+    let enFormatoString = JSON.stringify(pilaJS);
+    document.cookie = "pila=" + enFormatoString + ";max-age=86400;path=/"
+}
+// Función para cargar la pila guardada
+function cargarPilaGuardada() {
+    let pilaString = obtenerMiEstructuraDeDatos("pila");
+    if (pilaString) {
+        try {
+            pilaJS = JSON.parse(pilaString);
 
-document.addEventListener('DOMContentLoaded', function() {
-    cargarPilaGuardada();
-    const codigoFuente = 
-`#include <stdio.h>
-#include <stdlib.h>
+            // Reconstruir la pila visual
+            const pilaVisual = document.getElementById('pila');
 
-// Definición de la estructura del nodo
-typedef struct nodo {
-    int dato;
-    struct nodo *siguiente;
-} Nodo;
-
-// Definición de la estructura de la pila
-typedef struct {
-    Nodo *cima;
-} Pila;
-
-// Función para crear una nueva pila
-Pila* crearPila() {
-    Pila *p = (Pila *)malloc(sizeof(Pila));
-    p->cima = NULL;
-    return p;
+            pilaJS.forEach(elemento => {
+                const nuevoElemento = document.createElement('div');
+                nuevoElemento.classList.add('elemento-pila');
+                nuevoElemento.textContent = elemento;
+                pilaVisual.insertBefore(nuevoElemento, pilaVisual.firstChild); // Se inserta al inicio
+            });
+        } catch (error) {
+            console.error("Error al analizar la cookie: " + error);
+        }
+    }
 }
 
-// Función para crear un nuevo nodo
-Nodo* crearNodo(int dato) {
-    Nodo *nuevoNodo = (Nodo *)malloc(sizeof(Nodo));
-    nuevoNodo->dato = dato;
-    nuevoNodo->siguiente = NULL;
-    return nuevoNodo;
-}`;
-
-    document.getElementById('codigoFuente').textContent = codigoFuente;
+guardaPila.addEventListener("click", function(event) {
+    event.preventDefault();
+    guardarPila();
 });
 
-function mostrarCodigoFuente() {
-    let codigoFuente = document.getElementById('codigoFuente');
-    let codigoOperacion = document.getElementById('codigoOperacion');
+cargaPila.addEventListener("click", function (event) {
+    event.preventDefault();
+    cargarPilaGuardada();
+});
 
-    // Mostrar el código fuente con animación
-    codigoFuente.classList.remove('codigo-oculto');
-    codigoFuente.classList.add('codigo-visible');
-
-    // Ocultar el código de operación, si está visible
-    codigoOperacion.classList.remove('codigo-visible');
-    codigoOperacion.classList.add('codigo-oculto');
-}
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('nuevaPila').addEventListener('click', crearNuevaPila);
+    document.getElementById('guardarPila').addEventListener('click', guardarPila);
+    document.getElementById('pushButton').addEventListener('click', agregarALaPila);
+    document.getElementById('popButton').addEventListener('click', quitarDeLaPila);
+});
