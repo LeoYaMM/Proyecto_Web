@@ -131,6 +131,10 @@ document.getElementById('nuevaPila').addEventListener('click', function() {
     mostrarCodigoFuente();
 });
 
+document.getElementById('guardarPila').addEventListener('click', function() {
+    guardarPila();
+    mostrarCodigoFuente();
+});
 
 function cargarPilaGuardada() {
     const pilaGuardada = JSON.parse(getCookie('pila'));
@@ -150,6 +154,7 @@ function crearNuevaPila() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    cargarPilaGuardada();
     const codigoFuente = 
 `#include <stdio.h>
 #include <stdlib.h>
