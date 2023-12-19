@@ -6,22 +6,12 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: rgb(190, 138, 173);
-}
-
-.containerGeneral{
-    margin-top: 5px;
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px;
-    background-color: rgba(234, 236, 224, 0.578);
-    border: 5px solid #efefef;
-    border-radius: 5px;
+    background-color: #f4f4f4;
 }
 
 .contenedor {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     gap: 20px;
     justify-content: center;
 }
@@ -61,11 +51,6 @@ button {
     transition: background-color 0.3s ease;
 }
 
-a{
-    text-decoration: none;
-    color: white;
-}
-
 button:hover {
     background-color: #45a049;
 }
@@ -74,28 +59,104 @@ form {
     margin-bottom: 20px;
 }
 
-.imagenesOperaciones {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.overlay-texto {
+    position: absolute;
+    top: 10px; /* Ajusta según sea necesario */
+    left: 10px; /* Ajusta según sea necesario */
+    color: white; /* O el color que prefieras */
+    font-size: 20px; /* Ajusta según sea necesario */
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mejorar la legibilidad */
+    padding: 5px;
 }
 
-.imagenOperacion {
-    margin-top: 15px;
-    transition: all 0.3s ease;
-    max-height: 0;
-    overflow: hidden;
+.texto-encima {
+    width: 100%; /* Ajusta al ancho del contenedor */
+    text-align: center; /* Centra el texto */
+    margin-bottom: 10px; /* Espacio entre el texto y la imagen */
+    color: #333; /* Color del texto */
+    font-size: 20px; /* Tamaño del texto */
+    font-weight: bold;
 }
 
-.imagenOperacion.visible {
-    max-height: 1000px; /* Ajusta según el tamaño de tu imagen */
+elemento-pila {
+    /* Resto de las reglas sin cambios... */
+    opacity: 0; /* Inicia invisible */
+    transform: translateY(-20px); /* Inicia desplazado hacia arriba */
 }
 
-.nuevoElemento{
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+.elemento-pila.entrando {
+    animation: animacionEntrada 0.5s forwards;
+}
+
+.elemento-pila.saliendo {
+    animation: animacionSalida 0.5s forwards;
+}
+
+@keyframes animacionEntrada {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes animacionSalida {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+@keyframes deslizarHaciaArriba {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes deslizarHaciaAbajo {
+    from { transform: translateY(0); }
+    to { transform: translateY(100%); }
+}
+
+.elemento-pila.entrando {
+    animation: deslizarHaciaArriba 0.5s forwards;
+}
+
+.elemento-pila.saliendo {
+    animation: deslizarHaciaAbajo 0.5s forwards;
+}
+#codigoFuente {
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow: auto;
+    max-height: 300px; /* Ajusta según tus necesidades */
+    background-color: #f8f8f8;
+    font-family: monospace;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animación para desaparecer */
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(20px); }
+}
+
+/* Clases para controlar la visibilidad */
+.codigo-visible {
+    animation: fadeIn 0.5s forwards;
+    display: block; /* O flex, dependiendo de tu diseño */
+}
+
+.codigo-oculto {
+    animation: fadeOut 0.5s forwards;
+    display: none; /* Se establece al final de la animación */
 }

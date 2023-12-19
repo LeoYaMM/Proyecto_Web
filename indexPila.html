@@ -6,32 +6,22 @@
     <link rel="stylesheet" href="stylePila.css">
 </head>
 <body>
-    <div class="containerGeneral">
+    <h1>Pila</h1>
     <div class="contenedor">
         <div id="pila"></div>
-
-        <div class="imagenesOperaciones">
-            <div id="imagenPush" class="imagenOperacion" style="display: none;">
-                <img src="push.jpg" alt="Imagen Push" width="500px">
-            </div>
-            <div id="imagenPop" class="imagenOperacion" style="display: none;">
-                <img src="pop.jpg" alt="Imagen Pop" width="500px">
-            </div>
-        </div>
+    <pre id="codigoFuente"></pre>
+    <pre id="codigoOperacion"></pre>
+  
     </div>
 
     <form id="formElemento">
-        <div class="nuevoElemento">
-            <input type="text" id="nuevoElemento" placeholder="Ingresa un elemento"><br>
-        </div>
+        <input type="text" id="nuevoElemento" placeholder="Ingresa un elemento">
         <button id="cargarPila">Cargar Pila Guardada</button>
         <button id="nuevaPila">Crear Nueva Pila</button>
         <button type="submit">Push</button>
         <button id="eliminarElemento">Pop</button>
-        <button id="return"><a href="indexPrincipal.html">Regresar al inicio</a></button>
     </form>
-    </div>
+    
     <script src="scriptPila.js"></script>
 </body>
 </html>
-
