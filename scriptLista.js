@@ -4,8 +4,12 @@ function appendToEnd(){
     var inputValue = prompt("Ingresa el elemento:");
     li.appendChild(document.createTextNode(inputValue));
     li.style.width = 50 + 'px';
+    li.style.transform = "translateY(-100%)";
     ul.appendChild(li);
     document.getElementById('imagenMostrada').src = 'appendToEnd.png';
+    setTimeout(() => {
+        li.style.transform = "translateY(0)";
+    }, 0);
 }
 
 function appendToTop(){
@@ -14,8 +18,12 @@ function appendToTop(){
     var inputValue = prompt("Ingresa el elemento:");
     li.appendChild(document.createTextNode(inputValue));
     li.style.width = 50 + 'px';
+    li.style.transform = "translateY(-100%)";
     ul.insertBefore(li, ul.firstChild);
     document.getElementById('imagenMostrada').src = 'appendToTop.png';
+    setTimeout(() => {
+        li.style.transform = "translateY(0)";
+    }, 0);
 }
 
 function insert(){
@@ -34,6 +42,7 @@ function insert(){
     li.textContent = elemento;
 
     li.style.width = 50 + 'px';
+    li.style.transform = "translateY(-100%)";
 
     if (posicion < 0 || posicion >= ul.children.length) {
        ul.appendChild(li);
@@ -41,12 +50,22 @@ function insert(){
        ul.insertBefore(li, ul.children[posicion]);
     }
     document.getElementById('imagenMostrada').src = 'insert.png';
+    setTimeout(() => {
+        li.style.transform = "translateY(0)";
+    }, 0);
 }
 
 function deleteFirst(){
     var ul = document.getElementById("myList");
     if (ul.childElementCount > 0) {
-        ul.removeChild(ul.firstChild);
+        var primerElemento = ul.firstElementChild;
+
+        primerElemento.style.transform = "scale(2)";
+        primerElemento.style.opacity = 0;
+
+        setTimeout(() => {
+            ul.removeChild(primerElemento);
+        }, 500);
     }
     document.getElementById('imagenMostrada').src = 'deleteFirst.png';
 }

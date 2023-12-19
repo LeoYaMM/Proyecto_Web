@@ -1,5 +1,10 @@
+.cabecera {
+    background-color: white; /* Fondo blanco */
+    
+}
+
 body {
-    background-image: url(wallpaper.png);
+    background-image: url(fondo.jpeg);
     background-repeat:space;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
