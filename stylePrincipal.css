@@ -1,10 +1,35 @@
 .cabecera {
     background-color: white; /* Fondo blanco */
+    position: fixed; /* Fija el header en una posición */
+    top: 0; /* Alinea el header con el borde superior de la página */
+    left: 0; /* Alinea el header con el borde izquierdo de la página */
+    width: 100%; /* Asegura que el header tenga el ancho completo */
+    z-index: 1000; /* Mantiene el header sobre otros elementos */
+    display: flex; /* Utiliza flexbox para alinear los elementos internos */
+    align-items: center; /* Centra los elementos verticalmente */
+    height: 100px;
+    justify-content: space-between;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    
+}
+
+.logo-escom,
+.logo-ipn {
+    height: 80px; /* Ajusta la altura de las imágenes, si es necesario */
+    margin-right: 15px; /* Espacio entre las imágenes y otros elementos */
+}
+
+.header-text {
+    margin-left: auto;
+    font-family: 'Times New Roman', Times, serif; /* Aplica la fuente Times New Roman */
+    font-size: 24px; /* Ajusta el tamaño de la fuente según necesites */
+    color: #333; /* Ajusta el color del texto si es necesario */
     
 }
 
 body {
-    background-image: url(fondo.jpeg);
+    /*background-image: url(fondo.jpeg);*/
     background-repeat:space;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
@@ -58,4 +83,21 @@ p{
     font-size: 16px;
     cursor: pointer;
     font-weight: bold;
+}
+.piePagina {
+    background-color: white; /* Fondo blanco para el footer */
+    position: fixed; /* Fija el footer en una posición */
+    bottom: 0; /* Alinea el footer con el borde inferior de la página */
+    left: 0; /* Alinea el footer con el borde izquierdo de la página */
+    width: 100%; /* Asegura que el footer tenga el ancho completo */
+    z-index: 1000; /* Mantiene el footer sobre otros elementos */
+    text-align: left; /* Alinea el texto del footer a la izquierda */
+    padding: 10px; /* Espacio vertical y horizontal dentro del footer */
+}
+
+.piePagina p {
+    font-size: 14px; /* Tamaño de fuente más pequeño para el texto del footer */
+    margin: 0; /* Remueve márgenes por defecto */
+    padding: 5px 0; /* Añade algo de espacio vertical interno */
+    display: inline-block; /* Permite que los párrafos se coloquen en línea */
 }

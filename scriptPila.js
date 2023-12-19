@@ -46,23 +46,6 @@ function guardarPila() {
 
 }
 
-function cargarPilaGuardada() {
-    let pilaGuardada;
-    try {
-        pilaGuardada = JSON.parse(getCookie('pila'));
-        console.log("Pila cargada:", pilaGuardada);
-    } catch (e) {
-        console.error("Error al parsear la pila guardada:", e);
-        return;
-    }
-    
-    if (pilaGuardada) {
-        crearNuevaPila(); // Limpia la pila actual antes de cargar la guardada
-        pilaGuardada.forEach(elemento => {
-            agregarALaPila(elemento);
-        });
-    }
-}
 
 function agregarALaPila(elemento) {
     const pila = document.getElementById('pila');
@@ -80,11 +63,11 @@ document.getElementById('eliminarElemento').addEventListener('click', function()
     if (pila.firstChild) {
         const elementoAEliminar = pila.firstChild;
         elementoAEliminar.classList.add('saliendo');
-
+        
         elementoAEliminar.addEventListener('animationend', function() {
             pila.removeChild(elementoAEliminar);
             guardarPila();
-
+            
             actualizarCodigoOperacion(`int pop(Pila *p) {
                 if (p->cima == NULL) {
                     printf("Pila vacía. No se puede realizar pop.\\n");
@@ -96,27 +79,27 @@ document.getElementById('eliminarElemento').addEventListener('click', function()
                 free(nodoAEliminar);
                 return dato;
             }`);
-
+            
             elementoAEliminar.removeEventListener('animationend', arguments.callee);
         });
     }
 });
 
-    
+
 function actualizarCodigoOperacion(texto) {
     let codigoOperacion = document.getElementById('codigoOperacion');
     let codigoFuente = document.getElementById('codigoFuente');
-        
-            // Actualizar texto
+    
+    // Actualizar texto
     codigoOperacion.textContent = texto;
-        
-            // Reiniciar la animación
+    
+    // Reiniciar la animación
     codigoOperacion.classList.remove('codigo-visible', 'codigo-oculto');
-            // Forzar el reflujo del DOM
+    // Forzar el reflujo del DOM
     void codigoOperacion.offsetWidth;
     codigoOperacion.classList.add('codigo-visible');
-        
-            // Ocultar el código fuente con animación
+    
+    // Ocultar el código fuente con animación
     codigoFuente.classList.remove('codigo-visible');
     codigoFuente.classList.add('codigo-oculto');
 }
@@ -137,14 +120,21 @@ document.getElementById('guardarPila').addEventListener('click', function() {
 });
 
 function cargarPilaGuardada() {
-    const pilaGuardada = JSON.parse(getCookie('pila'));
+    let pilaGuardada = getCookie('pila');
     if (pilaGuardada) {
-        crearNuevaPila(); // Limpia la pila actual antes de cargar la guardada
-        pilaGuardada.forEach(elemento => {
-            agregarALaPila(elemento);
-        });
+        try {
+            pilaGuardada = JSON.parse(pilaGuardada);
+            console.log("Pila cargada:", pilaGuardada);
+            crearNuevaPila(); // Limpia la pila actual antes de cargar la guardada
+            pilaGuardada.forEach(elemento => {
+                agregarALaPila(elemento);
+            });
+        } catch (e) {
+            console.error("Error al parsear la pila guardada:", e);
+        }
     }
 }
+
 
 function crearNuevaPila() {
     const pila = document.getElementById('pila');
