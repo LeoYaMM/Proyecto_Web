@@ -5,6 +5,7 @@ function appendToEnd(){
     li.appendChild(document.createTextNode(inputValue));
     li.style.width = 50 + 'px';
     ul.appendChild(li);
+    document.getElementById('imagenMostrada').src = 'appendToEnd.png';
 }
 
 function appendToTop(){
@@ -14,6 +15,7 @@ function appendToTop(){
     li.appendChild(document.createTextNode(inputValue));
     li.style.width = 50 + 'px';
     ul.insertBefore(li, ul.firstChild);
+    document.getElementById('imagenMostrada').src = 'appendToTop.png';
 }
 
 function insert(){
@@ -38,6 +40,7 @@ function insert(){
     } else {
        ul.insertBefore(li, ul.children[posicion]);
     }
+    document.getElementById('imagenMostrada').src = 'insert.png';
 }
 
 function deleteFirst(){
@@ -45,6 +48,7 @@ function deleteFirst(){
     if (ul.childElementCount > 0) {
         ul.removeChild(ul.firstChild);
     }
+    document.getElementById('imagenMostrada').src = 'deleteFirst.png';
 }
 
 function deleteLast(){
@@ -52,6 +56,7 @@ function deleteLast(){
     if (ul.childElementCount > 0) {
         ul.removeChild(ul.lastChild);
     }
+    document.getElementById('imagenMostrada').src = 'deleteLast.png';
 }
 
 function deleteByPosition(){
@@ -63,6 +68,7 @@ function deleteByPosition(){
     } else {
         alert("Celda fuera de rango.");
     }
+    document.getElementById('imagenMostrada').src = 'deleteByPosition.png';
 }
 
 function deleteByValue(){
@@ -83,4 +89,5 @@ function deleteByValue(){
     if (!encontrado) {
         alert("No se encontró un elemento con ese contenido.");
     }
+    document.getElementById('imagenMostrada').src = 'deleteByValue.png';
 }

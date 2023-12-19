@@ -4,8 +4,8 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 5%;
 }
-
 
 #myList li {
     display: inline-block;
@@ -14,4 +14,43 @@
     width: 200px;
     background-color: #dddddd;
     text-align: center;
+    border-radius: 10px;
+}
+
+#return a {
+    text-decoration: none;
+    color: inherit;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+button {
+    margin: 2px;
+    padding: 8px;
+    border-radius: 30px;
+    background-color: #72cd08;
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+body {
+    background-color: black;
+}
+
+img {
+    width: 300px;
+    height: auto;
 }
