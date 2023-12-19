@@ -30,7 +30,6 @@ function crearNuevaCola() {
         cola.removeChild(cola.firstChild);
     }
 }
-
 //push
 function agregarALaCola(elemento) {
     var inputField = document.getElementById('nuevoElemento');
@@ -45,7 +44,7 @@ function agregarALaCola(elemento) {
     colaJS.push(elemento);
     console.log(colaJS)
 }
-//pop function
+//pop 
 function quitarDeLaCola() {
     const cola = document.getElementById('cola');
     if (cola.firstChild) {
@@ -99,15 +98,14 @@ guardaCola.addEventListener("click", function(event) {
     guardarCola();
 });
 
+cargaCola.addEventListener("click", function (event) {
+    event.preventDefault();
+    cargarColaGuardada();
+})
+
 document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('nuevaCola').addEventListener('click', crearNuevaCola);
     document.getElementById('guardarCola').addEventListener('click', guardarCola);
-    document.getElementById('cargarCola').addEventListener('click', cargarColaGuardada);
     document.getElementById('pushButton').addEventListener('click', agregarALaCola);
     document.getElementById('popButton').addEventListener('click', quitarDeLaCola);
 });
-
-
-// Llama a cargarCola al cargar la página para cargar la cola previamente guardada
-window.onload = cargarColaGuardada;
-
