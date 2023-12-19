@@ -52,26 +52,8 @@ function quitarDeLaCola() {
 // Función para guardar la cola en una cookie
 function guardarCola() {
     let enFormatoString = JSON.stringify(colaJS);
-    document.cookie = "cola=" + enFormatoString + ";max-age=8200;path=/";
-}
-
-// Función para cargar la cola desde una cookie
-function cargarCola() {
-    let colaString = obtenerMiEstructuraDeDatos("cola");
-    if (colaString) {
-        colaJS = JSON.parse(colaString);
-
-        // Reconstruir la cola visual
-        const colaVisual = document.getElementById('cola');
-        colaVisual.innerHTML = ""; // Borra todos los elementos visuales existentes
-
-        colaJS.forEach(elemento => {
-            const nuevoElemento = document.createElement('div');
-            nuevoElemento.classList.add('elemento-cola');
-            nuevoElemento.textContent = elemento;
-            colaVisual.appendChild(nuevoElemento);
-        });
-    }
+    document.cookie = "cola=" + enFormatoString + ";max-age=86400;path=/";
+    console.log(colaJS);
 }
 
 // Función para obtener el valor de una cookie por nombre
@@ -86,5 +68,28 @@ function obtenerMiEstructuraDeDatos(nombreCookie) {
     return null;
 }
 
+function cargarColaGuardada() {
+    let colaString = obtenerMiEstructuraDeDatos("cola");
+    if (colaString) {
+        try {
+            colaJS = JSON.parse(colaString);
+
+            // Reconstruir la cola visual
+            const colaVisual = document.getElementById('cola');
+            colaVisual.innerHTML = ""; // Borra todos los elementos visuales existentes
+
+            colaJS.forEach(elemento => {
+                const nuevoElemento = document.createElement('div');
+                nuevoElemento.classList.add('elemento-cola');
+                nuevoElemento.textContent = elemento;
+                colaVisual.appendChild(nuevoElemento);
+            });
+        } catch (error) {
+            console.error("Error al analizar la cookie: " + error);
+        }
+    }
+}
+
 // Llama a cargarCola al cargar la página para cargar la cola previamente guardada
-window.onload = cargarCola;
+window.onload = cargarColaGuardada;
+
