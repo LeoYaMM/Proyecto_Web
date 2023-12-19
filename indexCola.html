@@ -10,13 +10,10 @@
     <div class="containerGeneral">
         <div class="contenedor">
             <div id="pila"></div>
-    
             <div class="imagenesOperaciones">
-                <div id="imagenPush" class="imagenOperacion" style="display: none;">
-                    <img src="pushCola.png" alt="Imagen Push" width="500px">
-                </div>
-                <div id="imagenPop" class="imagenOperacion" style="display: none;">
-                    <img src="popCola.png" alt="Imagen Pop" width="500px">
+                <div class="imagenOperacion">
+                    <img  id="imagenPush" src="pushCola.png" alt="Imagen Push" width="450px" style="display: none;">
+                    <img id="imagenPop" src="popCola.png" alt="Imagen Pop"  height="306px" style="display: none;">
                 </div>
             </div>
         </div>
@@ -27,9 +24,10 @@
             </div>
             <button id="cargarCola">Cargar Cola Guardada</button>
             <button id="nuevaCola">Crear Nueva Cola</button>
-            <button type="submit">Push</button>
-            <button id="eliminarElemento">Pop</button>
+            <button id="pushButton">Push</button>
+            <button id="popButton">Pop</button>
             <button id="return"><a href="indexPrincipal.html">Regresar al inicio</a></button>
     </div>
+    <script src="scriptCola.js"></script>
 </body>
 </html>

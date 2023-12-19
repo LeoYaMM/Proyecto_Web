@@ -74,21 +74,12 @@ form {
     margin-bottom: 20px;
 }
 
-.imagenesOperaciones {
+.imagenOperacion {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-.imagenOperacion {
-    margin-top: 15px;
-    transition: all 0.3s ease;
-    max-height: 0;
-    overflow: hidden;
-}
-
-.imagenOperacion.visible {
-    max-height: 1000px; /* Ajusta según el tamaño de tu imagen */
+    align-items: center;
+    justify-content: center;
 }
 
 .nuevoElemento{
