@@ -1,13 +1,13 @@
 /* estilos.css */
 .cabecera {
-    background-color: white; /* Fondo blanco */
-    position: fixed; /* Fija el header en una posición */
-    top: 0; /* Alinea el header con el borde superior de la página */
-    left: 0; /* Alinea el header con el borde izquierdo de la página */
-    width: 100%; /* Asegura que el header tenga el ancho completo */
-    z-index: 1000; /* Mantiene el header sobre otros elementos */
-    display: flex; /* Utiliza flexbox para alinear los elementos internos */
-    align-items: center; /* Centra los elementos verticalmente */
+    background-color: white; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    display: flex; 
+    align-items: center; 
     height: 80px;
     justify-content: space-between;
     padding: 30px 0;
@@ -16,15 +16,15 @@
 
 .logo-escom,
 .logo-ipn {
-    height: 80px; /* Ajusta la altura de las imágenes, si es necesario */
-    margin-right: 15px; /* Espacio entre las imágenes y otros elementos */
+    height: 80px; 
+    margin-right: 15px; 
 }
 
 .header-text {
     margin-left: auto;
-    font-family: 'Times New Roman', Times, serif; /* Aplica la fuente Times New Roman */
-    font-size: 24px; /* Ajusta el tamaño de la fuente según necesites */
-    color: #333; /* Ajusta el color del texto si es necesario */
+    font-family: 'Times New Roman', Times, serif; 
+    font-size: 24px; 
+    color: #333; 
     margin-right: 150px;
     
 }
@@ -36,7 +36,19 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #910245;
+}
+
+.containerGeneral{
+    position: relative;
+    top: 100px;
+    margin-top: 5px;
+    display: inline-block;
+    padding: 10px 200px;
+    margin: 10px;
+    background-color: rgba(234, 236, 224, 0.578);
+    border: 5px solid #efefef;
+    border-radius: 5px;
 }
 
 .contenedor {
@@ -91,28 +103,27 @@ form {
 
 .overlay-texto {
     position: absolute;
-    top: 10px; /* Ajusta según sea necesario */
-    left: 10px; /* Ajusta según sea necesario */
-    color: white; /* O el color que prefieras */
-    font-size: 20px; /* Ajusta según sea necesario */
+    top: 10px; 
+    left: 10px; 
+    color: white; 
+    font-size: 20px; 
     font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mejorar la legibilidad */
+    background-color: rgba(0, 0, 0, 0.5); 
     padding: 5px;
 }
 
 .texto-encima {
-    width: 100%; /* Ajusta al ancho del contenedor */
-    text-align: center; /* Centra el texto */
-    margin-bottom: 10px; /* Espacio entre el texto y la imagen */
-    color: #333; /* Color del texto */
-    font-size: 20px; /* Tamaño del texto */
+    width: 100%; 
+    text-align: center; 
+    margin-bottom: 10px; 
+    color: #333; 
+    font-size: 20px; 
     font-weight: bold;
 }
 
 elemento-pila {
-    /* Resto de las reglas sin cambios... */
-    opacity: 0; /* Inicia invisible */
-    transform: translateY(-20px); /* Inicia desplazado hacia arriba */
+    opacity: 0; 
+    transform: translateY(-20px); 
 }
 
 .elemento-pila.entrando {
@@ -165,7 +176,7 @@ elemento-pila {
     border: 1px solid #ccc;
     padding: 10px;
     overflow: auto;
-    max-height: 300px; /* Ajusta según tus necesidades */
+    max-height: 300px; 
     background-color: #f8f8f8;
     font-family: monospace;
 }
@@ -174,21 +185,20 @@ elemento-pila {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Animación para desaparecer */
+
 @keyframes fadeOut {
     from { opacity: 1; transform: translateY(0); }
     to { opacity: 0; transform: translateY(20px); }
 }
 
-/* Clases para controlar la visibilidad */
 .codigo-visible {
     animation: fadeIn 0.5s forwards;
-    display: block; /* O flex, dependiendo de tu diseño */
+    display: block; 
 }
 
 .codigo-oculto {
     animation: fadeOut 0.5s forwards;
-    display: none; /* Se establece al final de la animación */
+    display: none; 
 }
 
 a{
