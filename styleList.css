@@ -16,6 +16,7 @@
 .logo-escom,
 .logo-ipn {
     height: 80px; /* Ajusta la altura de las imágenes, si es necesario */
+    width: auto;
     margin-right: 15px; /* Espacio entre las imágenes y otros elementos */
 }
 
@@ -25,7 +26,6 @@
     font-size: 24px; /* Ajusta el tamaño de la fuente según necesites */
     color: #333; /* Ajusta el color del texto si es necesario */
     margin-right: 150px;
-    
 }
 
 
@@ -105,4 +105,5 @@ h1 {
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 15%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
