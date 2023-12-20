@@ -82,6 +82,9 @@ button {
 
 body {
     background-color: #910245;
+    /* background-image: url('backgroundipn.png');
+    background-size: cover;
+    background-repeat: no-repeat; */
 }
 
 h1 {
@@ -99,4 +102,11 @@ h1 {
     margin-right: 10%;
     margin-top: 13%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#imagenMostrada {
+    height: 400px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
 }
