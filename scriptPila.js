@@ -70,23 +70,25 @@ function cargarPilaGuardada() {
         try {
             pilaJS = JSON.parse(pilaString);
 
-            // Reconstruir la pila visual
+            // Vaciar la pila visual antes de reconstruir
             const pilaVisual = document.getElementById('pila');
             while (pilaVisual.firstChild) {
                 pilaVisual.removeChild(pilaVisual.firstChild);
             }
 
+            // Reconstruir la pila visual
             pilaJS.forEach(elemento => {
                 const nuevoElemento = document.createElement('div');
                 nuevoElemento.classList.add('elemento-pila');
                 nuevoElemento.textContent = elemento;
-                pilaVisual.insertBefore(nuevoElemento, pilaVisual.firstChild); // Se inserta al inicio
+                pilaVisual.appendChild(nuevoElemento); // Se inserta al final
             });
         } catch (error) {
             console.error("Error al analizar la cookie: " + error);
         }
     }
 }
+
 
 function obtenerMiEstructuraDeDatos(nombreCookie) {
     let cookies = document.cookie.split(';');
