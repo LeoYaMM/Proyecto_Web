@@ -38,41 +38,42 @@ body {
     background-color: rgb(49, 89, 147);
 }
 
-.containerGeneral{
-    margin-top: 5px;
-    display: inline-block;
-    padding: 10px 200px;
-    margin: 10px;
-    background-color: rgba(234, 236, 224, 0.578);
-    border: 5px solid #efefef;
-    border-radius: 5px;
+.containerGeneral {
+    display: flex;
+    flex-direction: column; /* Alinea los hijos del contenedor principal en una columna */
+    align-items: center; /* Centra los hijos horizontalmente */
+    justify-content: flex-start; /* Alinea los hijos al inicio del contenedor principal */
+    width: 100%; /* Opcional: Ajusta el ancho según sea necesario */
+    gap: 20px; /* Espacio entre la cola y la imagen */
 }
 
 .contenedor {
     display: flex;
-    align-items: start;
+    align-items: center; /* Asegúrate de que los elementos estén alineados en el centro */
     gap: 20px;
-    justify-content: center;
+    justify-content: flex-start; /* Cambia a flex-start para alinear los elementos de la cola desde el principio */
+    flex-direction: row; /* Cambia de column a row para alinear los elementos horizontalmente */
+    overflow-x: auto; /* Permite desplazamiento horizontal si los elementos exceden el ancho del contenedor */
 }
 
 #cola {
-        border: 2px solid #333;
-        width: 200px;
-        height: 300px;
-        margin-bottom: 20px;
-        overflow: hidden;
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
+    display: flex; /* Asegura que los elementos dentro de la cola también estén en flex */
+    flex-direction: row; /* Alinea los elementos de la cola horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente dentro de la cola */
+    gap: 10px; /* Establece un espacio entre los elementos de la cola */
+    padding: 10px; /* Opcional: agrega un poco de espacio interior */
+    /* Asegúrate de que el ancho pueda contener todos los elementos o que puedan desplazarse */
 }
 
 .elemento-cola {
-    border-bottom: 1px solid #ddd;
-    background-color: #e9e9e9;
+    border: 1px solid #000000;
+    background-color: #a4a4a4;
     text-align: center;
     padding: 10px;
     margin-top: -1px;
     transition: transform 0.3s ease, opacity 0.3s ease;
+    border-radius: 5px;
+    width: 50px;
 }
 
 button {
@@ -109,6 +110,7 @@ form {
     gap: 10px;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .nuevoElemento{
