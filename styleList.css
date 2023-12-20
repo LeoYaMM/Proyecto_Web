@@ -110,3 +110,18 @@ h1 {
     display: block;
     margin: 0 auto;
 }
+
+@keyframes entrarDesdeDerecha {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.lista-animada {
+    animation: entrarDesdeDerecha 1s ease forwards;
+}

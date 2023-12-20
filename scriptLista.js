@@ -127,3 +127,35 @@ function deleteByValue() {
     }
     document.getElementById('imagenMostrada').src = 'deleteByValue.png';
 }
+
+function guardarLista() {
+    var ul = document.getElementById("myList");
+    var elementos = [];
+
+    for (var i = 0; i < ul.children.length; i++) {
+        elementos.push(ul.children[i].innerText);
+    }
+
+    var listaEnCadena = JSON.stringify(elementos);
+    localStorage.setItem("miLista", listaEnCadena);
+    alert("Lista Guardada");
+}
+
+function cargarLista() {
+    var listaEnCadena = localStorage.getItem("miLista");
+    if (listaEnCadena) {
+        var elementos = JSON.parse(listaEnCadena);
+        var ul = document.getElementById("myList");
+        ul.innerHTML = ""; // Limpiar la lista actual
+
+        elementos.forEach(function(item) {
+            var li = document.createElement("li");
+            li.style.width = 50 + 'px';
+            li.appendChild(document.createTextNode(item));
+            li.classList.add("lista-animada");
+            ul.appendChild(li);
+        });
+    } else {
+        alert("No hay lista guardada");
+    }
+}
