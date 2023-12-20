@@ -1,3 +1,34 @@
+.cabecera {
+    background-color: white; /* Fondo blanco */
+    position: fixed; /* Fija el header en una posición */
+    top: 0; /* Alinea el header con el borde superior de la página */
+    left: 0; /* Alinea el header con el borde izquierdo de la página */
+    width: 100%; /* Asegura que el header tenga el ancho completo */
+    z-index: 1000; /* Mantiene el header sobre otros elementos */
+    display: flex; /* Utiliza flexbox para alinear los elementos internos */
+    align-items: center; /* Centra los elementos verticalmente */
+    height: 100px;
+    justify-content: space-between;
+    padding: 30px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.logo-escom,
+.logo-ipn {
+    height: 80px; /* Ajusta la altura de las imágenes, si es necesario */
+    margin-right: 15px; /* Espacio entre las imágenes y otros elementos */
+}
+
+.header-text {
+    margin-left: auto;
+    font-family: 'Times New Roman', Times, serif; /* Aplica la fuente Times New Roman */
+    font-size: 24px; /* Ajusta el tamaño de la fuente según necesites */
+    color: #333; /* Ajusta el color del texto si es necesario */
+    margin-right: 150px;
+    
+}
+
+
 #myList {
     list-style-type: none;
     padding: 0;
@@ -70,7 +101,8 @@ h1 {
 #contenido {
     background-color: black;
     border-radius: 20px;
-    padding: 3px;
+    padding: 30px;
     margin-left: 10%;
     margin-right: 10%;
+    margin-top: 15%;
 }
