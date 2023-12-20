@@ -1,12 +1,13 @@
 .cabecera {
-    background-color: white; /* Fondo blanco */
-    position: fixed; /* Fija el header en una posición */
-    top: 0; /* Alinea el header con el borde superior de la página */
-    left: 0; /* Alinea el header con el borde izquierdo de la página */
-    width: 100%; /* Asegura que el header tenga el ancho completo */
-    z-index: 1000; /* Mantiene el header sobre otros elementos */
-    display: flex; /* Utiliza flexbox para alinear los elementos internos */
-    align-items: center; /* Centra los elementos verticalmente */
+    background-color: white; 
+    position: fixed; 
+    bottom:0;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    z-index: 1000; 
+    display: flex; 
+    align-items: center; 
     height: 100px;
     justify-content: space-between;
     padding: 30px 0;
@@ -15,15 +16,15 @@
 
 .logo-escom,
 .logo-ipn {
-    height: 80px; /* Ajusta la altura de las imágenes, si es necesario */
-    margin-right: 15px; /* Espacio entre las imágenes y otros elementos */
+    height: 80px; 
+    margin-right: 15px; 
 }
 
 .header-text {
     margin-left: auto;
-    font-family: 'Times New Roman', Times, serif; /* Aplica la fuente Times New Roman */
-    font-size: 24px; /* Ajusta el tamaño de la fuente según necesites */
-    color: #333; /* Ajusta el color del texto si es necesario */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px; 
+    color: #333; 
     margin-right: 150px;
     
 }
@@ -86,12 +87,12 @@ p{
     font-weight: bold;
 }
 .piePagina {
-    background-color: white; /* Fondo blanco para el footer */
-    position: fixed; /* Fija el footer en una posición */
-    bottom: 0; /* Alinea el footer con el borde inferior de la página */
-    left: 0; /* Alinea el footer con el borde izquierdo de la página */
-    width: 100%; /* Asegura que el footer tenga el ancho completo */
-    z-index: 1000; /* Mantiene el footer sobre otros elementos */
+    background-color: white; 
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
     display:flex;
     align-items: center;
     justify-content: space-between;
@@ -101,29 +102,29 @@ p{
 }
 
 .footer-content {
-    list-style-type: none; /* Elimina los marcadores de lista */
-    padding: 0; /* Elimina el padding por defecto de la lista */
-    margin: 0; /* Opcional: elimina el margen por defecto de la lista */
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
 .footer-content li {
-    color: black; /* Establece el color del texto de la lista */
-    padding: 3px 0; /* Añade algo de espacio vertical entre los elementos de la lista */
-    line-height: 1.5; /* Ajusta el espacio entre líneas si es necesario */
+    color: black; 
+    padding: 3px 0; 
+    line-height: 1.5; 
 }
 
 .piePagina p {
-    font-size: 10px; /* Tamaño de fuente más pequeño para el texto del footer */
-    margin: 100; /* Remueve márgenes por defecto */
-    padding: 5px 0; /* Añade algo de espacio vertical interno */
+    font-size: 10px; 
+    margin: 100; 
+    padding: 5px 0; 
     line-height: 1.5;
 }
 
 .footer-image {
-    height: 100px; /* Ajusta la altura de la imagen, si es necesario */
+    height: 100px; 
     flex-shrink: 0;
     margin-left: auto;
     margin-right: 150px;

@@ -1,12 +1,12 @@
 .cabecera {
-    background-color: white; /* Fondo blanco */
-    position: fixed; /* Fija el header en una posición */
-    top: 0; /* Alinea el header con el borde superior de la página */
-    left: 0; /* Alinea el header con el borde izquierdo de la página */
-    width: 100%; /* Asegura que el header tenga el ancho completo */
-    z-index: 1000; /* Mantiene el header sobre otros elementos */
-    display: flex; /* Utiliza flexbox para alinear los elementos internos */
-    align-items: center; /* Centra los elementos verticalmente */
+    background-color: white; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    display: flex; 
+    align-items: center; 
     height: 100px;
     justify-content: space-between;
     padding: 30px 0;
@@ -15,17 +15,17 @@
 
 .logo-escom,
 .logo-ipn {
-    height: 80px; /* Ajusta la altura de las imágenes, si es necesario */
-    margin-right: 15px; /* Espacio entre las imágenes y otros elementos */
+    height: 80px; 
+    width: auto;
+    margin-right: 15px;
 }
 
 .header-text {
     margin-left: auto;
-    font-family: 'Times New Roman', Times, serif; /* Aplica la fuente Times New Roman */
-    font-size: 24px; /* Ajusta el tamaño de la fuente según necesites */
-    color: #333; /* Ajusta el color del texto si es necesario */
+    font-family: 'Times New Roman', Times, serif; 
+    font-size: 24px; 
+    color: #333; 
     margin-right: 150px;
-    
 }
 
 
@@ -68,7 +68,7 @@
 button {
     margin: 2px;
     padding: 8px;
-    border-radius: 30px;
+    border-radius: 20px;
     background-color: #72cd08;
     border: none;
     color: black;
@@ -81,14 +81,10 @@ button {
 }
 
 body {
-    background-color: #7a0039;
-}
-
-img {
-    width: 400px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+    background-color: #910245;
+    /* background-image: url('backgroundipn.png');
+    background-size: cover;
+    background-repeat: no-repeat; */
 }
 
 h1 {
@@ -99,10 +95,18 @@ h1 {
 }
 
 #contenido {
-    background-color: black;
-    border-radius: 20px;
+    background-color: rgb(249, 246, 246);
+    border-radius: 10px;
     padding: 30px;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 15%;
+    margin-top: 13%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#imagenMostrada {
+    height: 400px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
 }
