@@ -135,24 +135,24 @@ elemento-pila {
 }
 
 @keyframes animacionEntrada {
-    from {
+    0% {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(50px);
     }
-    to {
+    100% {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
 @keyframes animacionSalida {
-    from {
+    0% {
         opacity: 1;
         transform: translateY(0);
     }
-    to {
+    100% {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-50px);
     }
 }
 @keyframes deslizarHaciaArriba {
@@ -166,11 +166,10 @@ elemento-pila {
 }
 
 .elemento-pila.entrando {
-    animation: deslizarHaciaArriba 0.5s forwards;
-}
+    animation: animacionEntrada 0.5s ease-out forwards;}
 
 .elemento-pila.saliendo {
-    animation: deslizarHaciaAbajo 0.5s forwards;
+    animation: animacionSalida 0.5s ease-in forwards;
 }
 #codigoFuente {
     border: 1px solid #ccc;
@@ -190,6 +189,29 @@ elemento-pila {
     from { opacity: 1; transform: translateY(0); }
     to { opacity: 0; transform: translateY(20px); }
 }
+
+/* Animación de fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Animación de fade-out */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Clase para aplicar animación de fade-in */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+/* Clase para aplicar animación de fade-out */
+.fade-out {
+    animation: fadeOut 0.5s ease-in-out forwards;
+}
+
 
 .codigo-visible {
     animation: fadeIn 0.5s forwards;

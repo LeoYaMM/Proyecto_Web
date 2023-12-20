@@ -21,47 +21,67 @@ pushButton.addEventListener("click", function(event) {
 
 // Funcionalidad de la pila
 function crearNuevaPila() {
-    // Vaciar la pila lógica
-    pilaJS = [];
-
-    // Vaciar la pila visual
     const pila = document.getElementById('pila');
-    while (pila.firstChild) {
-        pila.removeChild(pila.firstChild);
-    }
+    // Aplicar animación de fade-out a cada elemento
+    Array.from(pila.children).forEach(elemento => {
+        elemento.classList.add('fade-out');
+    });
+
+    // Retrasar la eliminación hasta que la animación se complete
+    setTimeout(() => {
+        while (pila.firstChild) {
+            pila.removeChild(pila.firstChild);
+        }
+        pilaJS = [];
+        console.log('Nueva pila creada');
+    }, 500);
 }
 // push
 function agregarALaPila() {
     var inputField = document.getElementById('nuevoElemento');
     var elemento = inputField.value;
-    // visual
-    const pila = document.getElementById('pila');
+    if (!elemento) return; // Evita agregar elementos vacíos
+
+    // Creación y configuración del nuevo elemento de la pila
     const nuevoElemento = document.createElement('div');
-    nuevoElemento.classList.add('elemento-pila');
-    nuevoElemento.classList.add('entrando');
+    nuevoElemento.classList.add('elemento-pila', 'entrando');
     nuevoElemento.textContent = elemento;
+
+    // Visual: añadir el elemento al DOM
+    const pila = document.getElementById('pila');
     pila.insertBefore(nuevoElemento, pila.firstChild); // Se inserta al inicio
-    // interno
+
+    // Interno: agregar elemento a la estructura de datos de la pila
     pilaJS.unshift(elemento); // Se agrega al inicio de la pila
-    console.log(pilaJS)
+    console.log(pilaJS);
 }
 // pop
 function quitarDeLaPila() {
     const pila = document.getElementById('pila');
     if (pila.firstChild) {
         pila.firstChild.classList.add('saliendo');
-        setTimeout (() => {
+
+        // Retrasa la eliminación del elemento para permitir que la animación se complete
+        setTimeout(() => {
             pila.removeChild(pila.firstChild);
-            pilaJS.shift();
-            console.log(pilaJS)
-        },500);
+            pilaJS.shift(); // Elimina el elemento de la estructura de datos de la pila
+            console.log(pilaJS);
+        }, 500); // Asegúrate de que este tiempo coincida con la duración de la animación en CSS
     }
 }
+
 // Función para guardar la pila en una cookie
 function guardarPila() {
     console.log(pilaJS);
     let enFormatoString = JSON.stringify(pilaJS);
-    document.cookie = "pila=" + enFormatoString + ";max-age=86400;path=/"
+    document.cookie = "pila=" + enFormatoString + ";max-age=86400;path=/";
+
+    // Efecto visual al guardar
+    const pila = document.getElementById('pila');
+    pila.classList.add('fade-out');
+    setTimeout(() => {
+        pila.classList.remove('fade-out');
+    }, 500);
 }
 // Función para cargar la pila guardada
 function cargarPilaGuardada() {
@@ -69,19 +89,17 @@ function cargarPilaGuardada() {
     if (pilaString) {
         try {
             pilaJS = JSON.parse(pilaString);
-
-            // Vaciar la pila visual antes de reconstruir
             const pilaVisual = document.getElementById('pila');
+            // Vaciar la pila visual antes de reconstruir
             while (pilaVisual.firstChild) {
                 pilaVisual.removeChild(pilaVisual.firstChild);
             }
-
             // Reconstruir la pila visual
             pilaJS.forEach(elemento => {
                 const nuevoElemento = document.createElement('div');
-                nuevoElemento.classList.add('elemento-pila');
+                nuevoElemento.classList.add('elemento-pila', 'fade-in');
                 nuevoElemento.textContent = elemento;
-                pilaVisual.appendChild(nuevoElemento); // Se inserta al final
+                pilaVisual.appendChild(nuevoElemento);
             });
         } catch (error) {
             console.error("Error al analizar la cookie: " + error);
@@ -100,7 +118,6 @@ function obtenerMiEstructuraDeDatos(nombreCookie) {
     }
     return null;
 }
-
 
 guardaPila.addEventListener("click", function(event) {
     event.preventDefault();
