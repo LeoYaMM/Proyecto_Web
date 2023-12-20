@@ -35,10 +35,12 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: rgb(49, 89, 147);
+    background-color: rgb(114, 185, 232);
 }
 
 .containerGeneral{
+    position: relative;
+    top: 100px;
     margin-top: 5px;
     display: inline-block;
     padding: 10px 200px;
