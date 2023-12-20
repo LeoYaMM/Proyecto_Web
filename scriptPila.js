@@ -38,6 +38,7 @@ function agregarALaPila() {
     const pila = document.getElementById('pila');
     const nuevoElemento = document.createElement('div');
     nuevoElemento.classList.add('elemento-pila');
+    nuevoElemento.classList.add('entrando');
     nuevoElemento.textContent = elemento;
     pila.insertBefore(nuevoElemento, pila.firstChild); // Se inserta al inicio
     // interno
@@ -48,11 +49,12 @@ function agregarALaPila() {
 function quitarDeLaPila() {
     const pila = document.getElementById('pila');
     if (pila.firstChild) {
-        // Quitar de la pila visual
-        pila.removeChild(pila.firstChild);
-        // Quitar de la pila en JS
-        pilaJS.shift();
-        console.log(pilaJS)
+        pila.firstChild.classList.add('saliendo');
+        setTimeout (() => {
+            pila.removeChild(pila.firstChild);
+            pilaJS.shift();
+            console.log(pilaJS)
+        },500);
     }
 }
 // Función para guardar la pila en una cookie
@@ -63,13 +65,16 @@ function guardarPila() {
 }
 // Función para cargar la pila guardada
 function cargarPilaGuardada() {
-    let pilaString = obtenerMiEstructuraDeDatos("pila");
+    let pilaString = getcookie("pila");
     if (pilaString) {
         try {
             pilaJS = JSON.parse(pilaString);
 
             // Reconstruir la pila visual
             const pilaVisual = document.getElementById('pila');
+            while (pilaVisual.firstChild) {
+                pilaVisual.removeChild(pilaVisual.firstChild);
+            }
 
             pilaJS.forEach(elemento => {
                 const nuevoElemento = document.createElement('div');
@@ -81,6 +86,18 @@ function cargarPilaGuardada() {
             console.error("Error al analizar la cookie: " + error);
         }
     }
+}
+
+function getCookie(name) {
+    const cookieName = name + "=";
+    const cookies = document.cookie.split(';');
+    for (const cookie of cookies) {
+        let c = cookie.trim();
+        if (c.startsWith(cookieName)) {
+            return c.substring(cookieName.length, c.length);
+        }
+    }
+    return null;
 }
 
 guardaPila.addEventListener("click", function(event) {
