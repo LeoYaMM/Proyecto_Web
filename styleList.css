@@ -17,7 +17,7 @@
 .logo-ipn {
     height: 80px; 
     width: auto;
-    margin-right: 15px; 
+    margin-right: 15px;
 }
 
 .header-text {
@@ -84,13 +84,6 @@ body {
     background-color: #910245;
 }
 
-img {
-    width: 400px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
 h1 {
     color: white;
     text-align: center;
@@ -104,6 +97,6 @@ h1 {
     padding: 30px;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 25%;
+    margin-top: 13%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
