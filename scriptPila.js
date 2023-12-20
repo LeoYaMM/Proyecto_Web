@@ -65,7 +65,7 @@ function guardarPila() {
 }
 // Función para cargar la pila guardada
 function cargarPilaGuardada() {
-    let pilaString = getcookie("pila");
+    let pilaString = obtenerMiEstructuraDeDatos("pila");
     if (pilaString) {
         try {
             pilaJS = JSON.parse(pilaString);
@@ -88,17 +88,17 @@ function cargarPilaGuardada() {
     }
 }
 
-function getCookie(name) {
-    const cookieName = name + "=";
-    const cookies = document.cookie.split(';');
-    for (const cookie of cookies) {
-        let c = cookie.trim();
-        if (c.startsWith(cookieName)) {
-            return c.substring(cookieName.length, c.length);
+function obtenerMiEstructuraDeDatos(nombreCookie) {
+    let cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim();
+        if (cookie.startsWith(nombreCookie + '=')) {
+            return decodeURIComponent(cookie.substring(nombreCookie.length + 1));
         }
     }
     return null;
 }
+
 
 guardaPila.addEventListener("click", function(event) {
     event.preventDefault();
