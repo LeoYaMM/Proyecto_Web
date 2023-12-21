@@ -3,13 +3,10 @@ function appendToEnd() {
     var li = document.createElement("li");
     var inputValue = prompt("Ingresa el elemento:");
     li.appendChild(document.createTextNode(inputValue));
-    li.style.width = 50 + 'px';
-    li.style.transform = "translateY(-100%)";
+    li.style.width = '50px';
+    li.classList.add("animate-add");
     ul.appendChild(li);
     document.getElementById('imagenMostrada').src = 'appendToEnd.png';
-    setTimeout(() => {
-        li.style.transform = "translateY(0)";
-    }, 10);
 }
 
 function appendToTop() {
@@ -17,13 +14,10 @@ function appendToTop() {
     var li = document.createElement("li");
     var inputValue = prompt("Ingresa el elemento:");
     li.appendChild(document.createTextNode(inputValue));
-    li.style.width = 50 + 'px';
-    li.style.transform = "translateY(-100%)";
+    li.style.width = '50px';
+    li.classList.add("animate-add");
     ul.insertBefore(li, ul.firstChild);
     document.getElementById('imagenMostrada').src = 'appendToTop.png';
-    setTimeout(() => {
-        li.style.transform = "translateY(0)";
-    }, 10);
 }
 
 function insert() {
@@ -41,8 +35,8 @@ function insert() {
     var li = document.createElement("li");
     li.textContent = elemento;
 
-    li.style.width = 50 + 'px';
-    li.style.transform = "translateY(-100%)";
+    li.style.width = '50px';
+    li.classList.add("animate-add");
 
     if (posicion < 0 || posicion >= ul.children.length) {
         ul.appendChild(li);
@@ -50,9 +44,6 @@ function insert() {
         ul.insertBefore(li, ul.children[posicion]);
     }
     document.getElementById('imagenMostrada').src = 'insert.png';
-    setTimeout(() => {
-        li.style.transform = "translateY(0)";
-    }, 10);
 }
 
 function deleteFirst() {
@@ -60,8 +51,7 @@ function deleteFirst() {
     if (ul.childElementCount > 0) {
         var primerElemento = ul.firstElementChild;
 
-        primerElemento.style.transform = "scale(2)";
-        primerElemento.style.opacity = 0;
+        primerElemento.classList.add("animate-delete");
 
         setTimeout(() => {
             ul.removeChild(primerElemento);
@@ -75,8 +65,7 @@ function deleteLast() {
     if (ul.childElementCount > 0) {
         var lastElement = ul.lastElementChild;
 
-        lastElement.style.transform = "scale(2)";
-        lastElement.style.opacity = 0;
+        lastElement.classList.add("animate-delete");
 
         setTimeout(() => {
             ul.removeChild(lastElement);
@@ -90,8 +79,7 @@ function deleteByPosition() {
     var ul = document.getElementById("myList");
     var items = document.querySelectorAll("#myList li");
     if (index < items.length) {
-        items[index].style.transform = "scale(2)";
-        items[index].style.opacity = 0;
+        items[index].classList.add("animate-delete");
 
         setTimeout(() => {
             ul.removeChild(items[index]);
@@ -111,8 +99,7 @@ function deleteByValue() {
 
     for (var i = 0; i < elementos.length; i++) {
         if (elementos[i].textContent === contenido) {
-            elementos[i].style.transform = "scale(2)";
-            elementos[i].style.opacity = 0;
+            elementos[i].classList.add("animate-delete");
 
             setTimeout(() => {
                 lista.removeChild(elementos[i]);
