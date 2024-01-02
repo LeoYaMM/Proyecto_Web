@@ -30,7 +30,7 @@
 }
 
 body {
-    background-image: url(fon.avif);
+    background-image: url("fon.png");
     background-repeat:no-repeat;
     background-position: center -150px;
     background-size: cover;
