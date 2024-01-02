@@ -31,30 +31,53 @@ function crearNuevaCola() {
     }
 }
 //push
-function agregarALaCola(elemento) {
+function agregarALaCola() {
     var inputField = document.getElementById('nuevoElemento');
     var elemento = inputField.value;
-    //visual
+    if (elemento.trim() === '') return; // No hacer nada si el campo está vacío
+
+    // Visual
     const cola = document.getElementById('cola');
     const nuevoElemento = document.createElement('div');
-    nuevoElemento.classList.add('elemento-cola');
+    nuevoElemento.classList.add('elemento-cola', 'entradaPush'); // Agrega la clase de la animación
     nuevoElemento.textContent = elemento;
     cola.appendChild(nuevoElemento);
-    //interno
+    
+    // Asegurarse de que la imagen de push se muestre y aplique la animación
+    imagenPush.style.display = "block";
+    imagenPush.classList.remove('salidaPop');
+    imagenPush.classList.add('entradaPush');
+
+    // Interno
     colaJS.push(elemento);
-    console.log(colaJS)
+    console.log(colaJS);
+
+    // Limpiar el campo de entrada
+    inputField.value = '';
 }
-//pop 
+
+// Modifica la función quitarDeLaCola para incluir la animación pop
 function quitarDeLaCola() {
     const cola = document.getElementById('cola');
     if (cola.firstChild) {
-        // Quitar de la cola visual
-        cola.removeChild(cola.firstChild);
+        // Quitar de la cola visual con animación
+        const elementoARemover = cola.firstChild;
+        //elementoARemover.classList.add('salidaPop'); // Agrega la clase de la animación
+
+        // Esperar a que termine la animación antes de remover el elemento
+        setTimeout(() => {
+            if (cola.contains(elementoARemover)) {
+                cola.removeChild(elementoARemover);
+            }
+        }, 500); // 500 ms es la duración de la animación
         // Quitar de la cola en JS
         colaJS.shift();
-        console.log(colaJS)
+        console.log(colaJS);
     }
 }
+
+
+
 // Función para guardar la cola en una cookie
 function guardarCola() {
     console.log(colaJS);
