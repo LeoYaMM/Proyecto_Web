@@ -4,35 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina Principal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylePrincipal.css">
 </head>
+<header class="cabecera">
+
+    <a href="https://www.ipn.mx/" target="_blank">
+        <img src="IPN-Logo.png" alt="IPN Logo" class="logo-ipn">
+    </a>
+
+    <a href="https://escom.ipn.mx/" target="_blank">
+        <img src="ESCOM.png" alt="ESCOM Logo" class="logo-escom">
+    </a>
+
+    <div class="header-text">
+        Tecnologías para el Desarrollo de Aplicaciones Web
+    </div>
+</header>
 <body>
-    <header class="cabecera">
-
-        <a href="https://www.ipn.mx/" target="_blank">
-            <img src="IPN-Logo.png" alt="IPN Logo" class="logo-ipn">
-        </a>
-
-        <a href="https://escom.ipn.mx/" target="_blank">
-            <img src="ESCOM.png" alt="ESCOM Logo" class="logo-escom">
-        </a>
-
-        <div class="header-text">
-            Tecnologías para el Desarrollo de Aplicaciones Web
-        </div>
-    </header>
     <div class="containerGeneral">
         <div class="principal">
-            <h1>Proyecto Web</h1>
+            <h1>Proyecto Final</h1>
         <p>Seleccione la estructura de datos que desea consultar:</p>
-        <div class="hipervinculos">
-            <a href="indexPila.html" class="boton">Pila</a>
-            <a href="indexCola.html" class="boton">Cola</a>
-            <a href="indexLista.html" class="boton">Lista</a>
+        </div>
+        <div class="cards">
+            <a href="indexPila.html" class="card-link">
+            <div class="card card1">
+                <div class="container">
+                    <img src="PilaDiagrama.png" alt="Pila">
+                </div>
+                <div class="details">
+                    <h3>Pila</h3>
+                    <p>Último en entrar, primero en salir; ideal para gestionar procesos secuenciales y temporales.</p>
+                </div>
+            </div>
+            </a>
+            <a href="indexCola.html" class="card-link card2-link">
+                <div class="card card2">
+                <div class="container">
+                    <img src="ColaDiagrama.jpeg" alt="Cola">
+                </div>
+                <div class="details">
+                    <h3>Cola</h3>
+                    <p>Primero en entrar, primero en salir; perfecta para tareas ordenadas y secuenciales.</p>
+                </div>
+                </div>
+            </a>
+            <a href="indexLista.html" class="card-link card3-link">
+                <div class="card card3">
+                <div class="container">
+                    <img src="ListaDiagrama.png" alt="Lista">
+                </div>
+                <div class="details">
+                    <h3>Lista</h3>
+                    <p>Colección dinámica y flexible; permite acceso y modificación en cualquier punto de su estructura.</p>
+                </div>
+                </div>
+            </a>
         </div>
     </div>
-
-    <footer class="piePagina">
+</body>
+<footer class="piePagina">
         <ul class="footer-content">
             <li>Castillo Reyes Diego / <a href="https://github.com/Diego-2019" target="_blank">Diego-2019</a></li>
             <li>Escamilla Resendiz Aldo / <a href="https://github.com/alduus" target="_blank">alduus</a></li>
@@ -42,5 +74,4 @@
             <img src="GitHub.png" alt="Proyecto Web en GitHub" class="footer-image">
         </a>
     </footer>
-</body>
 </html>

@@ -1,9 +1,7 @@
 .cabecera {
     background-color: white; 
-    position: fixed; 
-    bottom:0;
+    position: relative; 
     top: 0; 
-    left: 0;
     width: 100%; 
     z-index: 1000; 
     display: flex; 
@@ -22,24 +20,25 @@
 
 .header-text {
     margin-left: auto;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Poppins',sans-serif;
     font-size: 24px; 
     color: #333; 
     margin-right: 150px;
-    
 }
 
 body {
-    background-image: url("fon.png");
+    /*background-image: url("fon.png");
     background-repeat:no-repeat;
     background-position: center -150px;
-    background-size: cover;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
-    margin-top: 12%;
+    background-size: cover;*/
+    background-color: #221e34;;
+    height: 100vh;
+    display: grid;
+    place-items: center center;
+    font-family: 'Poppins',sans-serif;
 }
 
-.containerGeneral{
+.principal{
     margin-top: 5px;
     display: inline-block;
     padding: 10px 200px;
@@ -59,11 +58,6 @@ h2{
     font-size: 30px;
     font-weight: bold;
 }
-.integrantes{
-    list-style-type:none;
-    padding: 0;
-    font-weight: bold;
-}
 
 p{
     margin-top: 20px;
@@ -72,23 +66,111 @@ p{
     margin-bottom: 5px;
 }
 
-.boton {
-    margin-top: 5px;
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px;
-    background-color: rgb(167, 252, 101);
-    color: black;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    font-weight: bold;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    padding: 20px;
+    grid-gap: 20px;
+}
+.card{
+    background-color: #1c1b29;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.18);
+}
+.container{
+    position: relative;
+    clip-path: polygon(0 0,100% 0, 100% 85%, 0 100%);
+}
+img{
+    width: 100%;
+    display: block;
+    border-radius: 20px 20px 0 0;
+}
+.container:after{
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 20px 20px 0 0;
+    opacity: 0.7;
+}
+
+.card2>.container:after{
+    background-image: linear-gradient(
+        135deg,
+        #2bdce3,
+        #42ffdb
+    );
+}
+.card3>.container:after{
+    background-image: linear-gradient(
+        135deg,
+        #ffab1d,
+        #f8501c
+    );
+}
+
+.details>h3{
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 10px 0 15px 0;
+}
+.details>p{
+    color: #a0a0a0;
+    font-size: 15px;
+    line-height: 30px;
+    font-weight: 400;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease; /* Añade una transición suave para el efecto de escalar */
+}
+
+.card-link:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+.card1 .container:after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 20px 20px 0 0;
+    opacity: 0.7;
+    background-image: linear-gradient(135deg, #0100ec, #fb36f4);
+    z-index: 2; /* Este z-index debe ser mayor que el de la imagen pero menor que el del contenido de texto */
+}
+
+.card1 .container img {
+    display: block;
+    width: 100%; /* Asegúrate de que la imagen llene su contenedor */
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    z-index: 1; /* La imagen debe estar debajo de la capa de difuminado */
+}
+
+.details {
+    position: relative;
+    z-index: 3; /* Asegúrate de que el texto esté sobre la capa de difuminado */
+}
+
 .piePagina {
     background-color: white; 
-    position: fixed; 
+    position:relative; 
     bottom: 0; 
     left: 0; 
     width: 100%; 
@@ -116,6 +198,12 @@ p{
     line-height: 1.5; 
 }
 
+.footer-content a {
+    color: black; 
+    text-decoration: none; 
+    transition: 0.3s; 
+}
+
 .piePagina p {
     font-size: 10px; 
     margin: 100; 
@@ -124,7 +212,8 @@ p{
 }
 
 .footer-image {
-    height: 100px; 
+    height: 100px;
+    width: auto; 
     flex-shrink: 0;
     margin-left: auto;
     margin-right: 150px;
