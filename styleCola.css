@@ -68,6 +68,19 @@ body {
     padding: 10px; /* Opcional: agrega un poco de espacio interior */
     margin-top: 5px;
     overflow: visible;
+    list-style-type: none;
+}
+
+#cola li {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    width: 50px;
+    background-color: #dddddd;
+    text-align: center;
+    border-radius: 10px;
+    transition: transform 1s ease;
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .elemento-cola {
@@ -75,7 +88,7 @@ body {
     text-align: center;
     padding: 10px;
     margin-top: -1px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    animation: entradaDesdeDerecha 0.5s ease forwards;
     border-radius: 5px;
     width: 50px;
     margin-right: 10px;
@@ -138,21 +151,18 @@ form {
     }
 }
 
-@keyframes salidaHaciaIzquierda {
-    0% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-    100% {
+@keyframes fadeAndScaleOut {
+    to {
+        transform: scale(2);
         opacity: 0;
-        transform: translateX(-100%);
     }
+}
+
+.salidaPop {
+    animation: fadeAndScaleOut 0.8s ease forwards;
 }
 
 .entradaPush {
     animation: entradaDesdeDerecha 0.5s ease forwards;
 }
 
-.salidaPop {
-    animation: salidaHaciaIzquierda 0.5s ease forwards;
-}

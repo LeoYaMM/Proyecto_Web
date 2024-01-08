@@ -32,17 +32,16 @@ function crearNuevaCola() {
 }
 //push
 function agregarALaCola() {
+    var ul = document.getElementById("cola");
+    var li = document.createElement("li");
     var inputField = document.getElementById('nuevoElemento');
     var elemento = inputField.value;
-    if (elemento.trim() === '') return; // No hacer nada si el campo está vacío
+    if (elemento.trim() === '') return;
 
-    // Visual
-    const cola = document.getElementById('cola');
-    const nuevoElemento = document.createElement('div');
-    nuevoElemento.classList.add('elemento-cola', 'entradaPush'); // Agrega la clase de la animación
-    nuevoElemento.textContent = elemento;
-    cola.appendChild(nuevoElemento);
-    
+    li.appendChild(document.createTextNode(elemento));
+    li.classList.add("elemento-cola");
+    ul.appendChild(li);
+
     // Asegurarse de que la imagen de push se muestre y aplique la animación
     imagenPush.style.display = "block";
     imagenPush.classList.remove('salidaPop');
@@ -56,27 +55,22 @@ function agregarALaCola() {
     inputField.value = '';
 }
 
-// Modifica la función quitarDeLaCola para incluir la animación pop
+// pop
 function quitarDeLaCola() {
-    const cola = document.getElementById('cola');
-    if (cola.firstChild) {
-        // Quitar de la cola visual con animación
-        const elementoARemover = cola.firstChild;
-        //elementoARemover.classList.add('salidaPop'); // Agrega la clase de la animación
+    var ul = document.getElementById("cola");
+    if (ul.childElementCount > 0) {
+        var primerElemento = ul.firstElementChild;
 
-        // Esperar a que termine la animación antes de remover el elemento
+        primerElemento.classList.add("salidaPop");
+
         setTimeout(() => {
-            if (cola.contains(elementoARemover)) {
-                cola.removeChild(elementoARemover);
-            }
-        }, 500); // 500 ms es la duración de la animación
-        // Quitar de la cola en JS
-        colaJS.shift();
-        console.log(colaJS);
+            ul.removeChild(primerElemento);
+        }, 800);
     }
+
+    colaJS.shift();
+    console.log(colaJS);
 }
-
-
 
 // Función para guardar la cola en una cookie
 function guardarCola() {
@@ -105,7 +99,7 @@ function cargarColaGuardada() {
             const colaVisual = document.getElementById('cola');
 
             colaJS.forEach(elemento => {
-                const nuevoElemento = document.createElement('div');
+                const nuevoElemento = document.createElement('li');
                 nuevoElemento.classList.add('elemento-cola');
                 nuevoElemento.textContent = elemento;
                 colaVisual.appendChild(nuevoElemento);
