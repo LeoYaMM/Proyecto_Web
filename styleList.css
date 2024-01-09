@@ -80,6 +80,12 @@ button {
     transition: background-color 0.3s ease;
 }
 
+button:active {
+    background-color: darkgreen;
+    color: white;
+    transform: scale(0.93);
+}
+
 body {
     background-color: #910245;
 }
